@@ -8,8 +8,9 @@
 // debemos usar un método de array que busque a ese elemento, que tome su valor de nombre y precio y que mande un alerta al usuario, diciéndole que el producto ya está preparado para ir a su domicilio, que salio x dinero y agradecer por su combra.
 
 class Objetos{
-    constructor (nombre, precio, cantidad, categoria, id){
+    constructor (nombre, marca, precio, cantidad, categoria, id){
         this.nombreProducto = nombre;
+        this.marcaProducto = marca;
         this.precioProducto = precio;
         this.cantidad = cantidad;
         this.categoriaProducto = categoria;
@@ -19,15 +20,15 @@ class Objetos{
 
 
 
-const productoTeclado = new Objetos ("Teclado Philips" , 10000 , 5 , "Gaming" , 6870 )
+const productoTeclado = new Objetos ("teclado",  "Philips" , 10000 , 5 , "Gaming" , 6870 )
 
-const productoMouse = new Objetos ("Mouse Philips" , 5000 , 8 , "Gaming" , 4443 )
+const productoMouse = new Objetos ("mouse" , "Philips" , 5000 , 8 , "Gaming" , 4443 )
 
-const productoMonitor = new Objetos ("Monitor Gigabyte" , 64000, 3 , "Gaming" , 8206 )
+const productoMonitor = new Objetos ("monitor", "Gigabyte" , 64000, 3 , "Gaming" , 8206 )
 
-const productoNotebook = new Objetos ("Notebook HP (Gamer)" , 285000, 2 , "Gaming" , 2408 )
+const productoNotebook = new Objetos ("notebook", "HP" , 285000, 2 , "Gaming" , 2408 )
 
-const productoAuris = new Objetos ("Auriculares (Gamer)" , 21000, 6 , "Gaming" , 2412 )
+const productoAuris = new Objetos ("auriculares", "Razer" , 21000, 6 , "Gaming" , 2412 )
 
 const productos = []
 
@@ -51,17 +52,26 @@ const productosOrdenados = productos.slice().sort(( a, b ) => {
 })
 
 
-const envio = 4320
-
-
 let nombreUsuario = prompt("Buenass, ponga su nombre y apellido")
 let preguntaUsuario = prompt(`Hola ${nombreUsuario}. ¿Que desea llevar, tenemos: teclado, mouse, monitor, notebook, auriculares`)
 
 
-const productoEncontrado = productos.find( (producto) => producto.nombreProducto === preguntaUsuario
+const productoEncontrado = productosOrdenados.find( (producto) => producto.nombreProducto === preguntaUsuario
 )
 
-console.log(productoEncontrado)
+const precioTotal = productoEncontrado.precioProducto
+
+
+if(productoEncontrado){
+
+    alert(
+        `- El producto ${productoEncontrado.nombreProducto} de marca ${productoEncontrado.marcaProducto} ya esta disponible para que llegue a su domicilio \n\n` +
+        `- El precio es de $ ${precioTotal} \n\n`+
+        `Muchas gracias por su compra`
+    )
+}else{
+    alert(`Ese productor no esta disponible`)
+}
 
 
 
