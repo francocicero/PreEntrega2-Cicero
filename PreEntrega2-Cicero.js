@@ -7,13 +7,17 @@
 // luego debemos mandar un prompt, que se aloje en una variable, que le pregunte al usuario qué quiere comprar.
 // debemos usar un método de array que busque a ese elemento, que tome su valor de nombre y precio y que mande un alerta al usuario, diciéndole que el producto ya está preparado para ir a su domicilio, que salio x dinero y agradecer por su combra.
 
-function Objetos (nombre, precio, cantidad, categoria, id){
-    this.nombreProducto = nombre;
-    this.precioProducto = precio;
-    this.cantidad = cantidad;
-    this.categoriaProducto = categoria;
-    this.idProducto = id;
+class Objetos{
+    constructor (nombre, precio, cantidad, categoria, id){
+        this.nombreProducto = nombre;
+        this.precioProducto = precio;
+        this.cantidad = cantidad;
+        this.categoriaProducto = categoria;
+        this.idProducto = id;
+    }
 }
+
+
 
 const productoTeclado = new Objetos ("Teclado Philips" , 10000 , 5 , "Gaming" , 6870 )
 
@@ -35,6 +39,7 @@ productos.push(
     productoAuris,
 )
 
+
 const productosOrdenados = productos.slice().sort(( a, b ) => {
     if ( a.nombreProducto < b.nombreProducto ) {
         return -1;
@@ -45,7 +50,6 @@ const productosOrdenados = productos.slice().sort(( a, b ) => {
     }
 })
 
-console.log(productosOrdenados)
 
 const envio = 4320
 
@@ -53,6 +57,22 @@ const envio = 4320
 let nombreUsuario = prompt("Buenass, ponga su nombre y apellido")
 let preguntaUsuario = prompt(`Hola ${nombreUsuario}. ¿Que desea llevar, tenemos: teclado, mouse, monitor, notebook, auriculares`)
 
+
+const productoEncontrado = productos.find( (producto) => producto.nombreProducto === preguntaUsuario
+)
+
+console.log(productoEncontrado)
+
+
+
+
+
+
+
+
+
+
+/*
 if (preguntaUsuario === "teclado"){
     alert(`Gracias por su compra, lo que compro es un ${productoTeclado.nombreProducto} que cuesta $${productoTeclado.precioProducto}, y tiene envio gratis`)
 }else if (preguntaUsuario === "mouse"){
@@ -66,3 +86,4 @@ if (preguntaUsuario === "teclado"){
 }else{
     alert("El tipo de producto que ingreso no es valido")
 }
+*/
