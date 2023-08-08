@@ -51,6 +51,7 @@ const productosOrdenados = productos.slice().sort(( a, b ) => {
     }
 })
 
+const envio = 4360
 
 let nombreUsuario = prompt("Buenass, ponga su nombre y apellido")
 let preguntaUsuario = prompt(`Hola ${nombreUsuario}. ¿Que desea llevar, tenemos: teclado, mouse, monitor, notebook, auriculares`)
@@ -61,12 +62,15 @@ const productoEncontrado = productosOrdenados.find( (producto) => producto.nombr
 
 const precioTotal = productoEncontrado.precioProducto
 
+const precioEnvio = (precioTotal + envio) 
+
+console.log(precioEnvio)
 
 if(productoEncontrado){
 
     alert(
         `- El producto ${productoEncontrado.nombreProducto} de marca ${productoEncontrado.marcaProducto} ya esta disponible para que llegue a su domicilio \n\n` +
-        `- El precio es de $ ${precioTotal} \n\n`+
+        `- El precio es de $ ${precioEnvio} con el precio del envio incluido!! \n\n`+
         `Muchas gracias por su compra`
     )
 }else{
